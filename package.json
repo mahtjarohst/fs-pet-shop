@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A small server app to demonstrate CRUD over an HTTP API",
   "main": "restfulExpressServer.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint",
     "start": "nodemon",
@@ -25,11 +26,14 @@
   },
   "homepage": "https://github.com/gSchool/fs-pet-shop#readme",
   "dependencies": {
-    "nodemon": "^1.9.1"
+    "express": "^4.18.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1",
     "mocha": "^3.0.2",
+    "nodemon": "^2.0.19",
     "rewire": "^2.5.2",
     "supertest": "^2.0.0"
   }
