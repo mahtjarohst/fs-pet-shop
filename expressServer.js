@@ -9,7 +9,7 @@ const errorHandler1 = (req, res, next) => {
 };
 
 app.get("/pets", (req, res, next) => {
-  readFile("pet.json", "utf-8")
+  readFile("pets.json", "utf-8")
     .then((str) => {
       const pets = JSON.parse(str);
       console.log(pets);
@@ -43,7 +43,11 @@ app.post("/pets", (req, res, next) => {
       if (typeof newPet.age === "number" && newPet.kind && newPet.name) {
         existingPets.push(newPet);
         return writeFile("pets.json", JSON.stringify(existingPets)).then(() => {
-          res.send("pets push");
+          readFile("pets.json", "utf-8")
+          .then((pet) => {
+            const newPet = JSON.parse(pet);
+            res.send(newPet[newPet.length -1]);
+          })
         });
       } else {
         res.sendStatus(400);
