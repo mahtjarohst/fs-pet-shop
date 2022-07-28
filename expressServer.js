@@ -1,8 +1,10 @@
 import express from "express";
 import { readFile } from "fs/promises";
 import { writeFile } from "fs/promises";
+
 const app = express();
 app.use(express.json());
+
 const errorHandler1 = (req, res, next) => {
   res.sendStatus(404);
   next();
@@ -57,7 +59,7 @@ app.post("/pets", (req, res, next) => {
 });
 
 app.use(errorHandler1);
-app.use(function (err, res) {
+app.use((err, res) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
